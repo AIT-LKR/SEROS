@@ -1,0 +1,12 @@
+*.gif
+*.ppm
+*.dblite
+*.o
+*.vti
+*.dat
+*.swp
+*.swo
+*.exe
+bin/
+tmp/
+pipe3D/seros3D_*
