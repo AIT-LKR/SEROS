@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+
+<!-- Simulation Configuration -->
+
+<meta>
+    <!-- Output directory -->
+    <outDir>        default         </outDir>
+    <!-- default = "seros_3D_" +shape+ "_Re" +Re+ "_x" +resolution+ "_" +description -->
+    <description>            </description>
+</meta>
+
+<physical>
+    <!-- water @ 20°C:                           -->
+    <!--  mu (dynamic   viscosity) = 1E-3 Pa*s   -->
+    <!--  rho0 (density)           = 1E+3 kg/m^3 -->
+    <!--  nu (kinematic viscosity) = 1E-6 m^2/s  -->
+    <Nu>  1E-4 </Nu>
+    <L0>  1E-1 </L0>
+</physical>
+
+<optimisation>
+    <!-- Settings for topology optimisation -->
+    <serosConstraint>  V  </serosConstraint>
+    <multiLayerSedi>  false  </multiLayerSedi>
+    <includeDiagNodes>  false  </includeDiagNodes>
+    <doSedi>  true  </doSedi>
+    <doEros>  true  </doEros>
+    <doHist>  true  </doHist>
+    <factorSeros>  .005 </factorSeros>
+    <smoothFactor>  0.08  </smoothFactor> <!--  for exponential smoothing of measurements -->
+    <shearStressNNAvgFactor>  .0  </shearStressNNAvgFactor> <!--  weight for neareast neighbour averaging of shearStress -->
+    <kineticEnergyAvgSmoothGradThreshold> 5E-8 </kineticEnergyAvgSmoothGradThreshold>
+    <densityAvgDiffSmoothGradSmoothThreshold>       5E-8  </densityAvgDiffSmoothGradSmoothThreshold>
+    <stopCriterion>
+        <kineticEnergy>    false  </kineticEnergy>
+        <densityAvgDiff>   false  </densityAvgDiff>
+        <shearStressDiff>  false  </shearStressDiff>
+    </stopCriterion>
+</optimisation>
+
+
+<numerics>
+    <Reynolds>   40  </Reynolds>
+    <uMax> 0    </uMax>   <!-- '0' leads to default: d_t ~ d_x^2  -->
+    <uLB>  0    </uLB>
+    <nuLB> 0.04 </nuLB>
+    <tau>  0    </tau>
+    <uDev> 0    </uDev>  <!-- for turbulent flow inlet -->
+    <nodesPerMeter> 100 </nodesPerMeter>   <!-- nodes / 1m -->
+    <!--  resolution overrules nodesPerMeter! -->
+    <resolution> 40 </resolution>   <!--  nodes / char lenght -->
+    <powerPoiseuilleVel> 2 </powerPoiseuilleVel>
+</numerics>
+
+<time>
+    <start>        0    </start>
+    <end>          800. </end>
+    <check>        0    </check>
+    <ramp>         20.  </ramp>
+    <log>          15.  </log>
+    <imgSave>      15.  </imgSave>
+    <vtkSave>      100. </vtkSave>
+    <measure>      .1   </measure>
+    <seros>        15.  </seros>
+</time>
+
+<geometry>
+    <flatMode> true </flatMode> <!-- simulation runs 2D with multiple layers and periodic bc in z-dir -->
+    <shape> T </shape> <!-- L, T, U, -, ~, D supported -->
+    <!-- Coordinates of the dimensionless simulation domain -->
+    <xLen> 6.  </xLen>
+    <yLen> 6.1  </yLen>
+    <zLen> -1. </zLen>
+    <inletPosition>  3.  </inletPosition>
+    <outletPosition> 1.1 </outletPosition>
+    <inletDiameter>  1.53 </inletDiameter>
+    <outletDiameter> 1.  </outletDiameter>
+    <bufferShift>    0.1 </bufferShift>
+    <bufferSteepness>0.  </bufferSteepness>
+    <pressureDist>   0.1 </pressureDist>
+    <constraintShape>          </constraintShape>  <!-- s (square) and c (circle/cylinder) supported -->
+    <constraintCentreX>    2.8 </constraintCentreX>
+    <constraintCentreY>    2.4 </constraintCentreY>
+    <constraintRadius>     0.5 </constraintRadius> <!-- used as edge length if square is selected -->
+</geometry>
+
+<visualisation>
+    <tauScaled> false  </tauScaled>
+    <tauMax>  .0007  </tauMax>
+</visualisation>

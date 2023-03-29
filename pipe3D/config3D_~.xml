@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+
+<!-- Simulation Configuration -->
+
+<meta>
+    <!-- Output directory -->
+    <outDir>        default         </outDir>
+    <!-- default = "seros_3D_" +shape+ "_Re" +Re+ "_x" +resolution+ "_" +description -->
+    <description> real3D           </description>
+</meta>
+
+<physical>
+    <!-- water @ 20°C:                           -->
+    <!--  mu (dynamic   viscosity) = 1E-3 Pa*s   -->
+    <!--  rho0 (density)           = 1E+3 kg/m^3 -->
+    <!--  nu (kinematic viscosity) = 1E-6 m^2/s  -->
+    <Nu>  1E-6 </Nu>
+    <L0>  1E-1 </L0>
+</physical>
+
+<optimisation>
+    <!-- Settings for topology optimisation -->
+    <serosMethod>  1  </serosMethod>
+    <doSedi>  true  </doSedi>
+    <doEros>  true  </doEros>
+    <doHist>  true  </doHist>
+    <factor-threshold-sedi>  0.005  </factor-threshold-sedi>
+    <factor-threshold-eros>  0.9  </factor-threshold-eros>
+    <smoothFactor>  0.08  </smoothFactor>
+    <smoothFactorDensityAverageDiffGrad>  0.1   </smoothFactorDensityAverageDiffGrad>
+    <smoothFactorDensitySumGrad>          0.1   </smoothFactorDensitySumGrad>
+    <smoothFactorKineticEnergyGrad>       0.1   </smoothFactorKineticEnergyGrad>
+    <smoothFactorShearStressDiffGrad>     0.1   </smoothFactorShearStressDiffGrad>
+    <kineticEnergySumSmoothGradThreshold> 5E-5  </kineticEnergySumSmoothGradThreshold>
+    <densitySumSmoothGradThreshold>       0.05  </densitySumSmoothGradThreshold>
+    <stopCriterion>
+        <kineticEnergy>      false </kineticEnergy>
+        <densityAverageDiff> false </densityAverageDiff>
+        <shearStressDiff>    false </shearStressDiff>
+    </stopCriterion>
+</optimisation>
+
+
+<numerics>
+    <Re>   300  </Re>
+    <uMax> 0 </uMax>   <!-- '0' leads to default: d_t ~ d_x^2  -->
+    <uDev> 0    </uDev>  <!-- for turbulent flow inlet -->
+    <resolution> 10 </resolution>
+    <nodesPerMeter> 100 </nodesPerMeter>   <!-- nodes / 1m -->
+    <!--  resolution overrules nodesPerMeter! -->
+    <resolution> 10 </resolution>   <!--  nodes / char lenght -->
+    <powerPoiseuilleVel> 2 </powerPoiseuilleVel>
+</numerics>
+
+<time>
+    <start>        0.    </start>
+    <end>          120.  </end>
+    <checkNumber>  0     </checkNumber>
+    <ramp>         2.    </ramp>
+    <log>          0.1   </log>
+    <imgSave>      0.5   </imgSave>
+    <vtkSave>      10.   </vtkSave>
+    <control>      0.2   </control>
+    <controlWrite> 0.2   </controlWrite>
+    <sedi>         0.2   </sedi>
+    <eros>         1.6   </eros>
+</time>
+
+<geometry>
+    <flatMode> false </flatMode> <!-- simulation runs 2D with multiple layers and periodic bc in z-dir -->
+    <shape> L </shape> <!-- L, T, U, -, ~, D supported -->
+    <!-- Coordinates of the physical simulation domain -->
+    <shape> ~ </shape> <!-- L, T, U, -, ~, D supported -->
+    <xLen> 18. </xLen>
+    <yLen> 6.  </yLen>
+    <zLen> -1. </zLen>
+    <inletPosition>  2  </inletPosition>
+    <outletPosition> 4 </outletPosition>
+    <inletDiameter>  1.  </inletDiameter>
+    <outletDiameter> 1.  </outletDiameter>
+    <bufferShift>    2.  </bufferShift>
+    <bufferSteepness>2.  </bufferSteepness>
+    <constraintShape>          </constraintShape>  <!-- s (square) and c (circle/cylinder) supported -->
+    <constraintCentreX>    2.8 </constraintCentreX>
+    <constraintCentreY>    2.4 </constraintCentreY>
+    <constraintRadius>     0.5 </constraintRadius> <!-- used as edge length if square is selected -->
+</geometry>
+
+<visualisation>
+    <tauMax>  .000003  </tauMax>
+</visualisation>

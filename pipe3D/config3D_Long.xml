@@ -1,0 +1,106 @@
+<?xml version="1.0" ?>
+
+<!-- Simulation Configuration -->
+
+<output>
+    <!-- Output directory -->
+    <outDir>        default         </outDir>
+    <!-- default = "seros_3D_" +shape+ "_Re" +Re+ "_x" +resolution+ "_" +description -->
+    <description> long </description>
+    <img>      1   </img>
+    <vtkFlow>  100 </vtkFlow>
+    <vtkTopo>  100 </vtkTopo>
+    <check>    0   </check>
+</output>
+
+<physical>
+    <!-- water @ 20°C:                           -->
+    <!--  mu (dynamic   viscosity) = 1E-3 Pa*s   -->
+    <!--  rho0 (density)           = 1E+3 kg/m^3 -->
+    <!--  nu (kinematic viscosity) = 1E-6 m^2/s  -->
+    <!-- perfecto HT 5 @ 40°C:                   -->
+    <!--  nu (kinematic viscosity) = 3.05E-5 m^2/s  -->
+    <!-- perfecto HT 5 @ 100°C:                     -->
+    <!--  nu (kinematic viscosity) = 5.28E-6 m^2/s  -->
+    <Nu>  0.   </Nu>
+    <L0>  0.   </L0>
+    <U0>  0.   </U0>
+</physical>
+
+<optimisation>
+    <!-- Settings for topology optimisation -->
+    <maxSeros> 1000     </maxSeros>
+    <serosConstraint> D     </serosConstraint>
+    <multiLayerSedi>  true  </multiLayerSedi>
+    <targetDiameter>  1.    </targetDiameter>
+    <doSedi>  true  </doSedi>
+    <doEros>  true  </doEros>
+    <doHist>  false  </doHist>
+    <doSTL>   true  </doSTL>
+    <STLsmoothing>  1  </STLsmoothing>
+    <factorSeros>  .01 </factorSeros>
+    <smoothFactor>  0.04  </smoothFactor> <!--  for exponential smoothing of measurements -->
+    <transient>  false </transient>
+    <kineticEnergyAvgSmoothGradThreshold> 5E-8 </kineticEnergyAvgSmoothGradThreshold>
+    <densityAvgDiffSmoothGradSmoothThreshold>       5E-8  </densityAvgDiffSmoothGradSmoothThreshold>
+    <stopCriterion>
+        <kineticEnergy>    false  </kineticEnergy>
+        <densityAvgDiff>   false  </densityAvgDiff>
+        <shearStressDiff>  false  </shearStressDiff>
+    </stopCriterion>
+    <inverseFlow>  false  </inverseFlow>
+    <openFlow>  false  </openFlow>
+    <freeSlip>  false  </freeSlip>
+</optimisation>
+
+
+<numerics>
+    <Reynolds>   40  </Reynolds>
+    <uMax> 0    </uMax>   <!-- '0' leads to default: d_t ~ d_x^2  -->
+    <uLB>  0    </uLB>
+    <nuLB> 0    </nuLB>
+    <tau>  0    </tau>
+    <cSma> 0    </cSma>
+    <uDev> 0    </uDev>  <!-- for turbulent flow inlet -->
+    <nodesPerMeter> 100 </nodesPerMeter>   <!-- nodes / 1m -->
+    <!--  resolution overrules nodesPerMeter! -->
+    <resolution> 40 </resolution>   <!--  nodes / char lenght -->
+    <powerPoiseuilleVel> 2 </powerPoiseuilleVel>
+</numerics>
+
+<time>
+    <start>        0     </start>
+    <ramp>         15.   </ramp>
+    <log>          15.   </log>
+    <analysis>      .1   </analysis>
+    <delayAnalysis> 20. </delayAnalysis>
+    <seros>        25.   </seros>
+</time>
+
+<geometry>
+    <flatMode> false </flatMode> <!-- simulation runs 2D with multiple layers and periodic bc in z-dir -->
+    <shape> L </shape> <!-- L, T, U, -, ~, D supported -->
+    <!-- Coordinates of the physical simulation domain -->
+    <xLen> 10.5  </xLen>
+    <yLen> 5.5  </yLen>
+    <zLen> 1.5  </zLen>
+    <inletPosition>  1.5 </inletPosition>
+    <outletPosition> 1.5 </outletPosition>
+    <inletDiameter>  1.  </inletDiameter>
+    <inletHeight>    1.  </inletHeight>
+    <outletDiameter> 1.  </outletDiameter>
+    <outletHeight>   1.  </outletHeight>
+    <bufferShiftIn>  0.5 </bufferShiftIn>
+    <bufferShiftOut> 0.5 </bufferShiftOut>
+    <bufferSteepness>0.  </bufferSteepness>
+    <cross>          0.0 </cross>
+    <pressureDist>   0.1 </pressureDist>
+    <freezeInnerSide> false </freezeInnerSide> <!-- only applicable for U -->
+    <obstacle> false </obstacle>
+</geometry>
+
+<visualisation>
+    <rhoMax>  1.02  </rhoMax>
+    <tauMax>  .0007  </tauMax>
+    <tauScaled> true  </tauScaled>
+</visualisation>

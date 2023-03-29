@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+
+<!-- Simulation Configuration -->
+
+<meta>
+    <!-- Output directory -->
+    <outDir>        default         </outDir>
+    <!-- default = "seros_3D_" +shape+ "_Re" +Re+ "_x" +resolution+ "_" +description -->
+    <description>            </description>
+</meta>
+
+<optimisation>
+    <!-- Settings for topology optimisation -->
+    <doOpt>  true  </doOpt>
+    <doHist> false </doHist>
+    <factor-threshold-sedi>  1.1  </factor-threshold-sedi>
+    <factor-threshold-eros>  0.9  </factor-threshold-eros>
+    <smoothFactor>  0.08  </smoothFactor>
+    <kineticEnergySumSmoothGradThreshold>  5E-4  </kineticEnergySumSmoothGradThreshold>
+</optimisation>
+
+
+<numerics>
+    <Re>   500  </Re>
+    <uMax> 0 </uMax>   <!-- '0' leads to default: d_t ~ d_x^2  -->
+    <uDev> 0    </uDev>  <!-- for turbulent flow inlet -->
+    <resolution> 10 </resolution>
+    <powerPoiseuilleVel> 2 </powerPoiseuilleVel>
+</numerics>
+
+<time>
+    <start>        0.    </start>
+    <end>          120.  </end>
+    <checkNumber>  0     </checkNumber>
+    <ramp>         2.    </ramp>
+    <log>          0.1   </log>
+    <imgSave>      0.5   </imgSave>
+    <vtkSave>      10.   </vtkSave>
+    <control>      0.2   </control>
+    <controlWrite> 0.2   </controlWrite>
+    <sedi>         0.2   </sedi>
+    <eros>         2.    </eros>
+</time>
+
+<geometry>
+    <!-- Coordinates of the physical simulation domain -->
+    <shape> D </shape> <!-- L, T, U, -, ~, D supported -->
+    <xLen> 1.  </xLen>
+    <yLen> 1.  </yLen>
+    <zLen> -1. </zLen>
+    <inletPosition>  .5  </inletPosition>
+    <outletPosition> .5  </outletPosition>
+    <inletDiameter>  1.  </inletDiameter>
+    <outletDiameter> .32 </outletDiameter>
+    <bufferShift>    1.1 </bufferShift>
+    <bufferLen>      .0  </bufferLen>
+    <constraintShape>          </constraintShape>  <!-- s (square) and c (circle/cylinder) supported -->
+    <constraintCentreX>    2.8 </constraintCentreX>
+    <constraintCentreY>    2.4 </constraintCentreY>
+    <constraintRadius>     0.5 </constraintRadius> <!-- used as edge length if square is selected -->
+</geometry>
