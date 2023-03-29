@@ -22,11 +22,10 @@ sudo apt install libgsl-dev
 ```
 
 ### Compilation
-If you used a compressed version of this software, all necessary files should be present.
+If you used a compressed version of this software, all necessary files might be present.
 If you use a cloned repo, you might need to use:
 ```cmd
-git submodule init
-git submodule update
+git submodule update --init --recursive --remote
 ```
 to load the files located in submodules.
 You also need to compile an additional executable for the reshaping constraint to work properly which is located in:
