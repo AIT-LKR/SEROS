@@ -5,9 +5,12 @@ The following animations show the shear stress (left), the density (center) and 
 <img src="./examples/shearStress.gif" alt="shear stress field" width="250"/> <img src="./examples/density.gif" alt="topology" width="250"/> <img src="./examples/velocity.gif" alt="velocity field" width="250"/>
 
 ## Acknowledgement
-- SEROS is utilising a modified version of the Palabos library, a framework for general-purpose computational fluid dynamics (CFD), with a kernel based on the lattice Boltzmann (LB) method. https://palabos.unige.ch/
-  The most recent version of the code is hosted by the developers here: https://gitlab.com/unigespc/palaboshttps://di.org/10.1016/j.camwa.2020.03.022.o
-- The reshaping constraint for a constant diameter uses https://github.com/mkazhdan/IsoSurfaceExtraction for calculation of the surface area of the channel.
+- SEROS is utilising a [modified version of the Palabos library](https://github.com/AIT-LKR/palabos), a framework for general-purpose computational fluid dynamics (CFD), with a kernel based on the lattice Boltzmann (LB) method. More information can be found here https://palabos.unige.ch/ and the most recent version of the code is hosted by the developers here: https://gitlab.com/unigespc/palabos.
+- The reshaping constraint for a constant diameter uses [IsoSurfaceExtraction](https://github.com/AIT-LKR/IsoSurfaceExtraction) a fork of https://github.com/mkazhdan/IsoSurfaceExtraction for calculation of the surface area of the channel.
+- For an experimental feature to load 2D domains from a ppm, the code https://github.com/fmenozzi/easyppm was also added to the "externalLibraries". This is no crucial part to use SEROS but it is necessary to be in the source code for compilation.
+
+## Funding
+ - The work presented here was conducted in the context of the Clean Sky 2 project COMBO3D. This project has received funding from the Clean Sky 2 Joint Undertaking under the European Union’s Horizon 2020 research and innovation programme under grant agree- ment No 831989. This publication reflects only the author’s views and the European Union is not liable for any use that may be made of the information contained therein.-
 
 ## Setup
 ### Dependencies
