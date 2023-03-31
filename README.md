@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/620307347.svg)](https://zenodo.org/badge/latestdoi/620307347)
 # SEROS
 This tool runs a Cellular Automaton (CA) combining the Lattice-Boltzmann Method (LBM) for fluid flow simulation with an heuristic reshaping algorithm mimicking SEdimentation and eROSion (hence the name 'SEROS').
 The following animations show the shear stress (left), the density (center) and the velocity (right) fields during the reshaping of a 2D elbow channel (taken from case '2D_L_Re40_x10_s15_r0.02_D'):
